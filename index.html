@@ -1,0 +1,31 @@
+<html>
+	<head>		
+		<script src="../socket.io/socket.io.js"></script>
+		
+		
+		<script>
+		
+		var socket = io.connect('http://localhost:3001');
+		  socket.on('get_date', function (data) {
+			  
+			  var chars = "0123456789ABCDEF";
+				var string_length = 6;
+				var randomstring = '';
+				for (var i = 0; i < 6; i++ ) 
+				{
+					var rnum = Math.floor( Math.random() * chars.length );
+					randomstring += chars.substring(rnum,rnum+1);
+				}
+			  
+			  document.getElementsByTagName('div')[0].outerHTML = "<div><h2>Fecha:</h2><h4 style=color:#" + randomstring + ">" + data.currentDate + "</h4></div>";
+			  
+		  });
+		  
+		</script>
+	</head>
+	<body>
+		<div></div>
+	</body>
+
+
+</html>
